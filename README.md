@@ -1,349 +1,352 @@
 # DEADLINEAI
 
-A powerful and intelligent deadline management system leveraging artificial intelligence to help you stay on top of your tasks and projects.
+A powerful AI-driven project management and deadline tracking application designed to help teams efficiently manage tasks, deadlines, and project timelines.
 
-## 📋 Table of Contents
+## Overview
 
-- [Overview](#overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [API Documentation](#api-documentation)
-- [Contributing](#contributing)
-- [License](#license)
-- [Support](#support)
+DEADLINEAI leverages artificial intelligence to provide intelligent deadline predictions, task prioritization, and automated project tracking. The system helps teams stay organized, meet deadlines, and optimize their workflow through smart scheduling and real-time monitoring.
 
-## 🎯 Overview
+## Features
 
-DEADLINEAI is an intelligent deadline and task management application designed to streamline project planning and execution. It combines modern UI/UX principles with machine learning capabilities to provide smart deadline suggestions, task prioritization, and progress tracking.
+- **AI-Powered Deadline Predictions**: Intelligent algorithms predict project completion times based on historical data and current progress
+- **Smart Task Prioritization**: Automatically prioritize tasks based on urgency, dependencies, and resource availability
+- **Real-time Project Tracking**: Monitor project progress with live dashboards and detailed analytics
+- **Automated Notifications**: Get alerts for upcoming deadlines, overdue tasks, and project milestones
+- **Collaboration Tools**: Seamless team collaboration with shared workspaces and real-time updates
+- **Resource Management**: Optimize resource allocation and track team capacity
+- **Custom Reporting**: Generate detailed reports on project metrics and team performance
 
-Whether you're managing personal projects or coordinating team initiatives, DEADLINEAI helps you:
-- Track important deadlines
-- Prioritize tasks intelligently
-- Get AI-powered insights and recommendations
-- Collaborate effectively with team members
-- Never miss a deadline again
+## Requirements
 
-## ✨ Features
+- Python 3.8+
+- Node.js 14+ (for frontend)
+- Database: PostgreSQL 12+ or compatible
+- Git for version control
 
-### Core Features
-- **Intelligent Deadline Management**: AI-powered suggestions for realistic deadline setting
-- **Smart Task Prioritization**: Automatic task ranking based on urgency, importance, and dependencies
-- **Real-time Progress Tracking**: Monitor project completion with intuitive dashboards
-- **Notification System**: Customizable alerts and reminders for upcoming deadlines
-- **Team Collaboration**: Share projects and collaborate with team members in real-time
-
-### Advanced Features
-- **AI Analytics**: Get insights into your productivity patterns and project trends
-- **Automated Risk Detection**: Identify projects at risk of missing deadlines
-- **Smart Recommendations**: Receive AI-powered suggestions for better time management
-- **Integration Support**: Connect with popular tools and services
-- **Customizable Workflows**: Tailor the system to your specific needs
-
-## 🚀 Installation
+## Installation
 
 ### Prerequisites
-- Python 3.8 or higher
-- Node.js 14 or higher (for frontend)
-- PostgreSQL 12 or higher (for database)
-- pip and npm package managers
 
-### Step-by-Step Installation
+Ensure you have the following installed on your system:
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/Angad05-hub/DEADLINEAI.git
-   cd DEADLINEAI
-   ```
-
-2. **Backend Setup**
-   ```bash
-   cd backend
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   python manage.py migrate
-   ```
-
-3. **Frontend Setup**
-   ```bash
-   cd frontend
-   npm install
-   npm run build
-   ```
-
-4. **Environment Configuration**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
-
-5. **Start the Application**
-   ```bash
-   # Terminal 1 - Backend
-   python manage.py runserver
-   
-   # Terminal 2 - Frontend
-   npm start
-   ```
-
-## 📖 Quick Start
-
-1. **Create an Account**
-   - Visit `http://localhost:3000`
-   - Click "Sign Up"
-   - Enter your details and create your account
-
-2. **Create Your First Project**
-   - Click "New Project"
-   - Enter project name and description
-   - Set target completion date
-   - Click "Create"
-
-3. **Add Tasks**
-   - Click "Add Task"
-   - Enter task details, deadline, and priority
-   - Let AI suggest an optimal deadline
-   - Save and start working
-
-4. **Track Progress**
-   - View your dashboard for overview
-   - Check task status and progress
-   - Receive smart notifications
-
-## 💻 Usage
-
-### Creating Deadlines
-
-```python
-from deadlineai.models import Deadline
-
-# Create a new deadline
-deadline = Deadline.objects.create(
-    title="Q1 Project Completion",
-    description="Complete all Q1 deliverables",
-    due_date="2025-03-31",
-    priority="HIGH",
-    assigned_to=user
-)
+```bash
+python --version  # Should be 3.8 or higher
+node --version    # Should be 14 or higher
+git --version     # For version control
 ```
 
-### Managing Tasks
+### Backend Setup
 
-```python
-from deadlineai.models import Task
+1. **Clone the repository**
 
-# Create a task
-task = Task.objects.create(
-    title="Design database schema",
-    deadline=deadline,
-    estimated_hours=16,
-    priority="MEDIUM"
-)
-
-# Update task status
-task.status = "IN_PROGRESS"
-task.save()
+```bash
+git clone https://github.com/Angad05-hub/DEADLINEAI.git
+cd DEADLINEAI
 ```
 
-### Getting AI Recommendations
+2. **Create a virtual environment**
 
-```python
-from deadlineai.ai import DeadlineAnalyzer
-
-analyzer = DeadlineAnalyzer()
-recommendations = analyzer.get_recommendations(user)
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-## ⚙️ Configuration
+3. **Install Python dependencies**
 
-### Environment Variables
+```bash
+pip install -r requirements.txt
+```
+
+4. **Configure environment variables**
 
 Create a `.env` file in the root directory:
 
 ```env
-# Database
-DATABASE_URL=postgresql://user:password@localhost:5432/deadlineai
-
-# Django
+DATABASE_URL=postgresql://username:password@localhost:5432/deadlineai
 SECRET_KEY=your-secret-key-here
 DEBUG=False
 ALLOWED_HOSTS=localhost,127.0.0.1
-
-# AI Settings
-AI_MODEL=gpt-4
-AI_API_KEY=your-api-key-here
-
-# Email
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_HOST_USER=your-email@gmail.com
-EMAIL_HOST_PASSWORD=your-app-password
-
-# Frontend
-REACT_APP_API_URL=http://localhost:8000/api
-REACT_APP_ENV=production
+AI_MODEL_PATH=./models/
 ```
 
-### Customizing Notification Settings
+5. **Set up the database**
+
+```bash
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+6. **Start the backend server**
+
+```bash
+python manage.py runserver
+```
+
+The backend will be available at `http://localhost:8000`
+
+### Frontend Setup
+
+1. **Navigate to the frontend directory**
+
+```bash
+cd frontend
+```
+
+2. **Install Node dependencies**
+
+```bash
+npm install
+```
+
+3. **Configure environment variables**
+
+Create a `.env.local` file:
+
+```env
+REACT_APP_API_URL=http://localhost:8000
+REACT_APP_WS_URL=ws://localhost:8000
+```
+
+4. **Start the development server**
+
+```bash
+npm start
+```
+
+The frontend will be available at `http://localhost:3000`
+
+## Usage
+
+### Quick Start
+
+1. Navigate to `http://localhost:3000` in your web browser
+2. Create a new account or log in with your credentials
+3. Create a new project and add tasks
+4. Set deadlines for your tasks
+5. Let DEADLINEAI's AI engine help you manage and optimize your workflow
+
+### Key Features
+
+#### Creating Projects
+- Click "New Project" on the dashboard
+- Enter project details and set initial deadlines
+- Invite team members to collaborate
+
+#### Adding Tasks
+- Add tasks with descriptions and estimated durations
+- Set dependencies between tasks
+- Assign team members to tasks
+
+#### AI Predictions
+- View AI-powered deadline predictions based on current progress
+- Receive recommendations for task reordering
+- Get alerts for at-risk tasks
+
+#### Reports and Analytics
+- Generate custom reports on project progress
+- Analyze team performance metrics
+- Export data for further analysis
+
+## Architecture
+
+### Technology Stack
+
+**Backend:**
+- Django / Flask (API)
+- PostgreSQL (Database)
+- Redis (Caching)
+- Celery (Task Queue)
+- TensorFlow / PyTorch (ML Models)
+
+**Frontend:**
+- React.js (UI Framework)
+- Redux (State Management)
+- Axios (HTTP Client)
+- Chart.js (Data Visualization)
+
+### Project Structure
+
+```
+DEADLINEAI/
+├── backend/
+│   ├── apps/
+│   │   ├── projects/
+│   │   ├── tasks/
+│   │   ├── users/
+│   │   └── ai/
+│   ├── models/
+│   ├── tests/
+│   └── manage.py
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── redux/
+│   │   └── App.js
+│   └── package.json
+├── requirements.txt
+└── README.md
+```
+
+## Configuration
+
+### Database Configuration
+
+Update your `.env` file with your database credentials:
+
+```env
+DATABASE_URL=postgresql://user:password@localhost:5432/deadlineai_db
+```
+
+### AI Model Configuration
+
+Place pre-trained models in the `models/` directory and update the configuration in `settings.py`:
 
 ```python
-# In admin panel or settings
-NOTIFICATION_PREFERENCES = {
-    'deadline_reminder_days': 3,
-    'daily_digest': True,
-    'email_notifications': True,
-    'sms_notifications': False,
+AI_MODEL_PATH = os.getenv('AI_MODEL_PATH', './models/')
+```
+
+## Testing
+
+### Running Tests
+
+```bash
+# Backend tests
+python manage.py test
+
+# Frontend tests
+cd frontend && npm test
+```
+
+### Test Coverage
+
+```bash
+coverage run --source='.' manage.py test
+coverage report
+```
+
+## Deployment
+
+### Docker Deployment
+
+Build and run using Docker:
+
+```bash
+docker-compose up -d
+```
+
+### Production Deployment
+
+1. Set `DEBUG=False` in your `.env` file
+2. Update `ALLOWED_HOSTS` with your domain
+3. Configure a production database (PostgreSQL recommended)
+4. Use a production WSGI server like Gunicorn
+5. Set up a reverse proxy (Nginx recommended)
+6. Enable SSL/TLS certificates
+
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)
+
+## API Documentation
+
+The API documentation is available at:
+
+- **Swagger UI**: `http://localhost:8000/api/docs/swagger/`
+- **ReDoc**: `http://localhost:8000/api/docs/redoc/`
+
+For detailed API endpoints and usage, refer to the [API Documentation](./docs/API.md)
+
+## Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for our code of conduct and development guidelines.
+
+## Troubleshooting
+
+### Common Issues
+
+**Issue: Database connection error**
+- Ensure PostgreSQL is running
+- Verify DATABASE_URL in your `.env` file
+- Check database user permissions
+
+**Issue: Frontend won't connect to backend**
+- Verify backend server is running on port 8000
+- Check REACT_APP_API_URL in `.env.local`
+- Clear browser cache and restart the dev server
+
+**Issue: AI model not loading**
+- Verify models are in the correct directory
+- Check file permissions
+- Review AI_MODEL_PATH configuration
+
+For more help, check the [Issues](https://github.com/Angad05-hub/DEADLINEAI/issues) page.
+
+## Logging
+
+Logs are stored in the `logs/` directory. Configure logging in `settings.py`:
+
+```python
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/deadlineai.log',
+        },
+    },
 }
 ```
 
-## 📚 API Documentation
+## Performance Tips
 
-### Endpoints
+- Enable caching with Redis for better performance
+- Use database indexing on frequently queried fields
+- Implement pagination for large datasets
+- Monitor AI model performance and retrain regularly
 
-#### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-- `POST /api/auth/refresh` - Refresh token
+## Security
 
-#### Projects
-- `GET /api/projects/` - List all projects
-- `POST /api/projects/` - Create new project
-- `GET /api/projects/{id}/` - Get project details
-- `PUT /api/projects/{id}/` - Update project
-- `DELETE /api/projects/{id}/` - Delete project
+- Keep dependencies updated: `pip install --upgrade -r requirements.txt`
+- Use environment variables for sensitive information
+- Enable CSRF protection
+- Implement rate limiting on API endpoints
+- Regularly audit security vulnerabilities
 
-#### Tasks
-- `GET /api/tasks/` - List all tasks
-- `POST /api/tasks/` - Create new task
-- `GET /api/tasks/{id}/` - Get task details
-- `PUT /api/tasks/{id}/` - Update task
-- `DELETE /api/tasks/{id}/` - Delete task
+## License
 
-#### AI Features
-- `POST /api/ai/recommend-deadline` - Get AI deadline recommendation
-- `POST /api/ai/prioritize-tasks` - Get task prioritization
-- `GET /api/ai/analytics` - Get analytics and insights
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
-### Example API Usage
+## Support
 
-```bash
-# Get authentication token
-curl -X POST http://localhost:8000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"username":"user","password":"pass"}'
+- **Documentation**: Check the [docs](./docs) folder
+- **Issues**: Report issues on [GitHub Issues](https://github.com/Angad05-hub/DEADLINEAI/issues)
+- **Discussions**: Join our [GitHub Discussions](https://github.com/Angad05-hub/DEADLINEAI/discussions)
+- **Email**: For urgent support, contact the development team
 
-# Create a new project
-curl -X POST http://localhost:8000/api/projects/ \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"My Project","description":"Description"}'
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-1. **Fork the Repository**
-   ```bash
-   git clone https://github.com/yourusername/DEADLINEAI.git
-   ```
-
-2. **Create a Feature Branch**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-
-3. **Make Your Changes**
-   - Write clean, documented code
-   - Add tests for new features
-   - Update documentation as needed
-
-4. **Commit Your Changes**
-   ```bash
-   git commit -m 'Add amazing feature'
-   ```
-
-5. **Push to the Branch**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-
-6. **Open a Pull Request**
-   - Describe your changes clearly
-   - Reference any related issues
-   - Wait for review and feedback
-
-### Coding Standards
-- Follow PEP 8 for Python code
-- Use ESLint for JavaScript/React
-- Write meaningful commit messages
-- Add docstrings to functions and classes
-- Include unit tests for new features
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 💬 Support
-
-### Getting Help
-- **Documentation**: Check our [wiki](https://github.com/Angad05-hub/DEADLINEAI/wiki)
-- **Issues**: Report bugs on [GitHub Issues](https://github.com/Angad05-hub/DEADLINEAI/issues)
-- **Discussions**: Join our community discussions
-- **Email**: Support available at [your-email@example.com]
-
-### Frequently Asked Questions
-
-**Q: Is DEADLINEAI free?**
-A: DEADLINEAI offers both free and premium tiers. The free tier includes basic deadline tracking and task management.
-
-**Q: Can I use DEADLINEAI offline?**
-A: Currently, DEADLINEAI requires an internet connection. Offline support is planned for future releases.
-
-**Q: How secure is my data?**
-A: We use industry-standard encryption and security practices. All data is encrypted in transit and at rest.
-
-**Q: Can I integrate DEADLINEAI with other tools?**
-A: Yes! We support integrations with popular tools including Slack, Google Calendar, Microsoft Teams, and more.
-
-## 🔒 Security
-
-- End-to-end encryption for sensitive data
-- Regular security audits
-- Two-factor authentication support
-- GDPR and privacy compliance
-- Secure API with rate limiting
-
-## 📊 Project Status
-
-- **Version**: 1.0.0
-- **Status**: Active Development
-- **Last Updated**: 2025-12-24
-
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] Mobile app (iOS/Android)
-- [ ] Advanced analytics dashboard
-- [ ] Calendar integration
-- [ ] Team analytics
-- [ ] Custom workflows
-- [ ] Webhook support
-- [ ] Advanced filtering and search
+- [ ] Advanced AI analytics
+- [ ] Integration with third-party tools (Slack, Jira, etc.)
+- [ ] Real-time collaboration features
+- [ ] Custom workflow automation
+- [ ] Enhanced reporting dashboards
 
-## 👥 Authors
+## Changelog
 
-- **Angad05-hub** - Project Lead
-
-## 🙏 Acknowledgments
-
-- Thanks to all contributors
-- Built with modern technologies
-- Inspired by the need for better deadline management
+See [CHANGELOG.md](./CHANGELOG.md) for version history and updates.
 
 ---
 
-**Made with ❤️ by the DEADLINEAI Team**
+**Last Updated**: December 24, 2025
+
+For more information, visit our [project website](https://deadlineai.example.com) or check out our [documentation](./docs).
