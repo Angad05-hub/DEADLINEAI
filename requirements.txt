@@ -1,0 +1,78 @@
+# Core Dependencies
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+Flask-Login==0.6.2
+Flask-WTF==1.1.1
+python-dotenv==1.0.0
+
+# Database
+SQLAlchemy==2.0.20
+psycopg2-binary==2.9.7
+
+# AI & Machine Learning
+openai==0.28.1
+transformers==4.33.0
+torch==2.0.1
+scikit-learn==1.3.1
+numpy==1.24.3
+pandas==2.0.3
+
+# Natural Language Processing
+nltk==3.8.1
+spacy==3.6.1
+
+# Task Management & Scheduling
+celery==5.3.1
+redis==5.0.0
+APScheduler==3.10.4
+
+# Authentication & Security
+PyJWT==2.8.0
+bcrypt==4.0.1
+cryptography==41.0.3
+python-jose==3.3.0
+
+# API & Web Framework
+requests==2.31.0
+httpx==0.24.1
+pydantic==2.0.3
+
+# Data Validation
+marshmallow==3.20.1
+email-validator==2.0.0
+
+# Time & Date Handling
+python-dateutil==2.8.2
+pytz==2023.3
+
+# Logging & Monitoring
+python-json-logger==2.0.7
+sentry-sdk==1.32.0
+
+# Testing
+pytest==7.4.0
+pytest-cov==4.1.0
+pytest-flask==1.2.0
+unittest-xml-reporting==3.2.0
+
+# Code Quality
+black==23.9.1
+flake8==6.0.0
+isort==5.12.0
+pylint==2.17.5
+
+# Documentation
+Sphinx==7.1.2
+sphinx-rtd-theme==1.3.0
+
+# Production Server
+gunicorn==21.2.0
+waitress==2.1.2
+
+# Frontend (if applicable)
+Flask-CORS==4.0.0
+
+# Utilities
+python-multipart==0.0.6
+click==8.1.7
+colorama==0.4.6
